@@ -11,7 +11,7 @@ const Client = () => {
   const [singleOperatorData, setSingleOperatorData] = useState({}); 
 
   useEffect(() => {
-    fetch("http://localhost:4000/client")
+    fetch("http://82.202.194.12:4000/client")
       .then((res) => res.json())
       .then((data) => setOperatorData(data));
   }, []);

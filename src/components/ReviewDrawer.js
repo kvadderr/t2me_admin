@@ -20,7 +20,7 @@ const ReviewDrawer = ({
     const [callHistory, setCallHistory] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:4000/call/operator/"+operatorId)
+        fetch("http://82.202.194.12:4000/call/operator/"+operatorId)
           .then((res) => res.json())
           .then((data) => setCallHistory(data));
           console.log('callHistory', callHistory)

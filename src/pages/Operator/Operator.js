@@ -26,7 +26,7 @@ const Operator = () => {
 
   useEffect(() => {
     openNotification();
-    fetch("http://localhost:4000/operator")
+    fetch("http://82.202.194.12:4000/operator")
       .then((res) => res.json())
       .then((data) => setOperatorData(data));
   }, []);
