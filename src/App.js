@@ -13,6 +13,7 @@ import './App.css';
 import FAQ  from './pages/FAQ/FAQ';
 import Operator from './pages/Operator/Operator';
 import Client from './pages/Client/Client';
+import Support from './pages/Support/Support';
 
 
 const { Content, Sider } = Layout;
@@ -60,6 +61,11 @@ const items = [
     getItem('ASMR', '10'),
   ]),
 
+  getItem(
+    <Link to="/support">
+      Support
+    </Link>, '14', <LogoutOutlined />),
+
   getItem('Выход', '11', <LogoutOutlined />),
   
 ];
@@ -104,6 +110,7 @@ const App: React.FC = () => {
                 <Route exact path='/' element={ <Operator/> }/>
                 <Route path='/client' element={ <Client/> }/>
                 <Route path='/operator' element={ <Operator/> }/>
+                <Route path='/support' element={ <Support/> }/>
               </Routes>
             </Content>
         </Layout>

@@ -1,17 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
-import { Table, Input, Space, notification, Button, Tag, Avatar } from 'antd'
+import { Table, Input, Space, notification, Button, Tag, Badge, Avatar } from 'antd';
 import { AntDesignOutlined } from '@ant-design/icons';
+
 import AddOperatorDrawer from '../../components/AddOperatorDrawer';
 import DetailDrawer from '../../components/DetailDrawer';
 
-const Client = () => {
-
+const Support = () => {
+  
   const [operatorData, setOperatorData] = useState([]);
   const [singleOperatorData, setSingleOperatorData] = useState({}); 
 
   useEffect(() => {
-    fetch("http://localhost:4000/client")
+    fetch("http://localhost:4000/support")
       .then((res) => res.json())
       .then((data) => setOperatorData(data));
   }, []);
@@ -20,12 +21,9 @@ const Client = () => {
   for (let i = 0; i < operatorData.length; i++ ){
     data.push({
       key: i,
-      login: operatorData[i].user.login,
-      fio: operatorData[i].user.FIO,
-      balance: operatorData[i].user.balance + ' $',
-      singleData: operatorData[i],
-      avatar: operatorData[i].user.avatar,
-      tags: ['ASMR', 'Психолог'],
+      fio: operatorData[i].user.isBanned ? <Badge status="error" text={operatorData[i].user.FIO} /> : operatorData[i].user.FIO,
+      message: operatorData[i].message,
+      avatar: operatorData[i].user.avatar
     })
   }
 
@@ -46,27 +44,16 @@ const Client = () => {
       width: '20%',
     },
     {
-      title: 'Логин',
-      dataIndex: 'login',
-      key: 'login',
-      width: '15%',
+      title: 'Сообщение',
+      dataIndex: 'message',
+      key: 'message',
+      width: '45%',
     },
     {
-      title: 'Баланс',
-      dataIndex: 'balance',
-      key: 'balance',
-    },
-    {
-      title: 'Аналитика',
+      title: 'Подробности',
       dataIndex: 'detail',
       key: 'detail',
-      render: () => <a>Отчет</a>
-    },
-    {
-      title: 'Подробнее',
-      dataIndex: 'singleData',
-      key: 'singleData',
-      render: (singleData) => <a onClick={() => clickDetail(singleData)}>Подробнее</a>
+      render: () => <a>Подробнее</a>
     },
   ];
 
@@ -92,4 +79,4 @@ const Client = () => {
   )
 };
 
-export default Client;
+export default Support;

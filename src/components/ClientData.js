@@ -15,7 +15,7 @@ const ClientData = (
     return (
         <Row>
           <Col span={12}>
-            <DescriptionItem title="Текущий баланс" content={singleData.singleData.balance + "$"} />
+            <DescriptionItem title="Текущий баланс" content={singleData.singleData.user.balance + "$"} />
           </Col>
         </Row>
     )
